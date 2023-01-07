@@ -1,0 +1,6 @@
+venv
+longformer
+outputs
+spanREL/outputs
+spanREL/data
+spanREL/models

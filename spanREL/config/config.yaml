@@ -1,0 +1,44 @@
+task: docred
+data_dir: 
+output_dir: "saved_models"
+max_length: 1024
+max_span_length: 30 #8
+span_hidden_size: 400 #150
+train_batch_size: 8
+eval_batch_size: 8
+negative_sample_ratio: 0.001 #0.01
+use_predicted_entities: True
+learning_rate: 5e-5
+warmup_proportion: 0.1
+num_epoch: 100
+eval_per_epoch: 1
+debug: False
+do_train: False
+do_eval: False
+do_predict: True
+train_shuffle: True
+entity_classes_json: /home/shearman/Desktop/work/relation-extraction-module/data/docred_pure/entity_classes.json
+relation_classes_json: /home/shearman/Desktop/work/relation-extraction-module/data/docred_pure/relation_classes.json
+longformer:
+  dataset_project: datasets/PURE
+  dataset_name: longformer
+  config: /home/shearman/Desktop/work/relation-extraction-module/longformer/config
+  model: /home/shearman/Desktop/work/relation-extraction-module/longformer/model
+  tokenizer: /home/shearman/Desktop/work/relation-extraction-module/longformer/autotokenizer
+  autotokenizer: /home/shearman/Desktop/work/relation-extraction-module/longformer/autotokenizer
+bert_model_dir: 
+seed: 1234
+context_window: 64
+clearml_dataset_project_name: datasets/PURE
+clearml_dataset_name: DOCRED
+clearml_dataset_tags: []
+task_tags: []
+gpu: 0
+remote: True
+early_stopping: True
+checkpointing: True
+trained_model_path: 
+rel_trained_model_path: /home/shearman/Desktop/work/relation-extraction-module/spanREL/models/best_entity_lm.ckpt
+rel_confidence: 0.70
+queue: queue-1xV100-32ram
+add_ner_tokens: True
