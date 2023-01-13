@@ -86,9 +86,11 @@ def predict(cfg, docs: List[Dict]):
     predictions_unbatched = []
     for prediction_batch in predictions:
         predictions_unbatched.extend(prediction_batch)
-    resultfile = open("/home/shearman/Desktop/work/relation-extraction-module/spanREL/data/predictions.jsonl", "wb")
-    writer = jsonlines.Writer(resultfile)
-    writer.write_all(predictions_unbatched)
+
+    if cfg.debug:
+        resultfile = open("/home/shearman/Desktop/work/relation-extraction-module/spanREL/data/predictions.jsonl", "wb")
+        writer = jsonlines.Writer(resultfile)
+        writer.write_all(predictions_unbatched)
 
     return predictions_unbatched
 
