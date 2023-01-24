@@ -1,13 +1,15 @@
-version: '3'
+version: '3.5'
+
 services:
-  spanrel:
-    build: ./
+  jerex-api:
+    build: ./build/
     stdin_open: true
     tty: true
+    networks:
+      - default
     ports:
-      - 8888:8888
-      - 6006:6006
-    command: "/bin/bash"
+      - 8088:8088
+    command: ["uvicorn", "api_service:app", "--host", "0.0.0.0", "--port", "8088"]
     environment:
       NVIDIA_VISIBLE_DEVICES: 0
       CUDA_VISIBLE_DEVICES: 0
@@ -15,8 +17,10 @@ services:
       memlock: -1
     shm_size: '16gb'
     volumes:
-      - .:/spanREL
-    ipc: "host"
+      - ./spanREL/src:/RE_module/src
+      - ./spanREL/config:/RE_module/config
+      - ./spanREL/models:/RE_module/models
+      - ./data:/RE_module/data
     deploy:
       resources:
         reservations:
