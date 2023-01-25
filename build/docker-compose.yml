@@ -2,7 +2,7 @@ version: '3.5'
 
 services:
   jerex-api:
-    build: ./build/
+    build: ../
     stdin_open: true
     tty: true
     networks:
@@ -17,10 +17,10 @@ services:
       memlock: -1
     shm_size: '16gb'
     volumes:
-      - ./spanREL/src:/RE_module/src
-      - ./spanREL/config:/RE_module/config
-      - ./spanREL/models:/RE_module/models
-      - ./data:/RE_module/data
+      - ../spanREL/src:/RE_module/src
+      - ../spanREL/config:/RE_module/config
+      - ../spanREL/models:/RE_module/models
+      - ../data:/RE_module/data
     deploy:
       resources:
         reservations:

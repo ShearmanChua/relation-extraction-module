@@ -16,16 +16,18 @@ from hydra import compose, initialize
 from hydra.core.config_store import ConfigStore
 from omegaconf import OmegaConf
 
-from run_ner import predict
+from run_rel import predict
 import common.utils as util
 
-initialize(config_path="spanNER/config", job_name="app")
+app = FastAPI()
+
+initialize(config_path="../config", job_name="app")
 cfg = compose(config_name="config")
 print(OmegaConf.to_yaml(cfg))
 
 util.config_to_abs_paths(cfg, 'entity_classes_json')
 util.config_to_abs_paths(cfg.longformer, 'config', 'model', 'tokenizer', 'autotokenizer')
-util.config_to_abs_paths(cfg, 'ner_trained_model_path')
+util.config_to_abs_paths(cfg, 'rel_trained_model_path')
 
 configs = cfg
 
