@@ -17,15 +17,15 @@ do_train: False
 do_eval: False
 do_predict: True
 train_shuffle: True
-entity_classes_json: /home/shearman/Desktop/work/relation-extraction-module/data/docred_pure/entity_classes.json
-relation_classes_json: /home/shearman/Desktop/work/relation-extraction-module/data/docred_pure/relation_classes.json
+entity_classes_json: ../data/docred_pure/entity_classes.json
+relation_classes_json: ../data/docred_pure/relation_classes.json
 longformer:
   dataset_project: datasets/PURE
   dataset_name: longformer
-  config: /home/shearman/Desktop/work/relation-extraction-module/longformer/config
-  model: /home/shearman/Desktop/work/relation-extraction-module/longformer/model
-  tokenizer: /home/shearman/Desktop/work/relation-extraction-module/longformer/autotokenizer
-  autotokenizer: /home/shearman/Desktop/work/relation-extraction-module/longformer/autotokenizer
+  config: ../models/longformer/config
+  model: ../models/longformer/model
+  tokenizer: ../models/longformer/autotokenizer
+  autotokenizer: ../models/longformer/autotokenizer
 bert_model_dir: 
 seed: 1234
 context_window: 64
@@ -38,7 +38,7 @@ remote: True
 early_stopping: True
 checkpointing: True
 trained_model_path: 
-rel_trained_model_path: /home/shearman/Desktop/work/relation-extraction-module/spanREL/models/best_entity_lm.ckpt
+rel_trained_model_path: ../models/best_entity_lm.ckpt
 rel_confidence: 0.70
 queue: queue-1xV100-32ram
 add_ner_tokens: True
